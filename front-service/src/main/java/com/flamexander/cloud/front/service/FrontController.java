@@ -1,7 +1,6 @@
 package com.flamexander.cloud.front.service;
 
 import com.flamexander.cloud.common.ProductDto;
-import com.flamexander.cloud.common.ProductDtoList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,8 +22,8 @@ public class FrontController {
 
     @GetMapping("/api/v1/products")
     public List<ProductDto> getProducts() {
-        ProductDtoList  list = restTemplate.getForObject("http://product-service/api/v1/products", ProductDtoList.class);
+        List<ProductDto>  list = restTemplate.getForObject("http://product-service/api/v1/products", List.class);
 
-        return list.getList();
+        return list;
     }
 }

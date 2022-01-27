@@ -1,7 +1,6 @@
 package com.flamexander.cloud.service.product;
 
 import com.flamexander.cloud.common.ProductDto;
-import com.flamexander.cloud.common.ProductDtoList;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,9 +18,9 @@ public class ProductController {
     private static final Function<Product, ProductDto> mapper = p -> new ProductDto(p.getId(), p.getTitle(), p.getPrice());
 
     @GetMapping
-    public ProductDtoList findAll() {
+    public List<ProductDto> findAll() {
         List<ProductDto> list = productService.findAll().stream().map(mapper).collect(Collectors.toList());
-        return new ProductDtoList(list);
+        return list;
     }
 
     @GetMapping("/{id}")
