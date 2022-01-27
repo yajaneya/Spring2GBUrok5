@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/api/v1/products")
 @RequiredArgsConstructor
-@CrossOrigin("http://localhost:3000") // Homework: *
+//@CrossOrigin("http://localhost:3000") // Homework: *
 public class ProductController {
     private final ProductService productService;
 
@@ -19,7 +19,8 @@ public class ProductController {
 
     @GetMapping
     public List<ProductDto> findAll() {
-        return productService.findAll().stream().map(mapper).collect(Collectors.toList());
+        List<ProductDto> list = productService.findAll().stream().map(mapper).collect(Collectors.toList());
+        return list;
     }
 
     @GetMapping("/{id}")
